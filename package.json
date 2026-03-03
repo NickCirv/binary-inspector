@@ -1,0 +1,29 @@
+{
+  "name": "binary-inspector",
+  "version": "1.0.0",
+  "description": "Inspect binary files — hex dump, magic bytes, file type detection",
+  "type": "module",
+  "bin": {
+    "binary-inspector": "./index.js",
+    "binx": "./index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "keywords": [
+    "developer-tools",
+    "cli",
+    "nodejs",
+    "zero-dependencies",
+    "binary",
+    "hex",
+    "forensics",
+    "file-analysis"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NickCirv/binary-inspector.git"
+  },
+  "author": "NickCirv"
+}
