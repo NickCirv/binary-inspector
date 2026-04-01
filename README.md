@@ -1,3 +1,5 @@
+![Banner](banner.svg)
+
 # binary-inspector
 
 Inspect binary files from the command line. Hex dump, magic byte detection, entropy analysis, string extraction, byte frequency, and hex pattern search — zero dependencies.
