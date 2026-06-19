@@ -25,5 +25,8 @@
     "type": "git",
     "url": "https://github.com/NickCirv/binary-inspector.git"
   },
-  "author": "NickCirv"
+  "author": "NickCirv",
+  "scripts": {
+    "test": "node --test"
+  }
 }
