@@ -1,67 +1,74 @@
-<div align="center">
+![Nicholas Ashkar — binary-inspector](assets/nicholas-ashkar/banner.png)
 
 # binary-inspector
 
-**Hex dump, magic-byte detection, entropy, strings, and pattern search — from one zero-dependency CLI.**
+Shows byte-level details of a local file for developers investigating unfamiliar formats.
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue?labelColor=0B0A09)](LICENSE)
-[![Zero dependencies](https://img.shields.io/badge/dependencies-0-brightgreen?labelColor=0B0A09)](package.json)
-[![Node](https://img.shields.io/badge/node-%3E%3D18-339933?labelColor=0B0A09)](package.json)
 
-</div>
 
-## Install
 
-```bash
-npx github:NickCirv/binary-inspector <file> [options]
-```
 
-Or install globally:
 
-```bash
-npm install -g github:NickCirv/binary-inspector
-```
 
-## Usage
 
-```bash
-# Hex dump (default)
-binx image.png
+<a id="usage"></a>
 
-# Detect file type from magic bytes
-binx /bin/ls --type
+<a id="hex-dump-default"></a>
 
-# Entropy + file info
-binx firmware.bin --info
+<a id="detect-file-type-from-magic-bytes"></a>
 
-# Extract printable strings (min length 8)
-binx /bin/ls --strings --min-len 8
+<a id="entropy--file-info"></a>
 
-# Search for a hex pattern
-binx archive.zip --search "50 4B 03 04"
+<a id="extract-printable-strings-min-length-8"></a>
 
-# Full analysis as JSON
-binx image.png --all --json
-```
+<a id="search-for-a-hex-pattern"></a>
 
-| Flag | Description |
-|---|---|
-| `--hex` | Hex dump (default when no other mode given) |
-| `--type` | Detect file type from magic bytes (30+ signatures) |
-| `--info` | File size, permissions, Shannon entropy |
-| `--strings` | Find printable ASCII sequences |
-| `--freq` | Byte frequency analysis, top 10 |
-| `--search <hex>` | Search for a hex pattern, e.g. `"FF D8 FF"` |
-| `--offset <n>` | Start at byte offset N |
-| `--length <n>` | Read N bytes from offset |
-| `--min-len <n>` | Min string length for `--strings` (default: 4) |
-| `--all` | Run all analyses |
-| `--json` | Output full analysis as JSON |
-| `--no-color` | Disable color output |
+<a id="full-analysis-as-json"></a>
 
 ## What it does
 
-`binary-inspector` reads any file and lets you explore its raw bytes without installing anything beyond Node. It identifies 30+ formats by magic bytes (PNG, JPEG, ELF, Mach-O, ZIP, SQLite, WASM, and more), computes Shannon entropy to flag encrypted or compressed regions, extracts printable strings, and searches for arbitrary hex patterns — all piped through a readable color terminal output or clean JSON.
+- Hex dumps.
+- Signature detection.
+- Printable strings.
+- Entropy and byte frequency.
+- Hex-pattern search.
 
----
-<sub>Zero dependencies · Node ≥ 18 · MIT · by <a href="https://github.com/NickCirv">NickCirv</a></sub>
+
+<a id="install"></a>
+
+## Quickstart
+
+Prerequisites: Node.js `>=18` and npm. The checkout below pins the source used for this documentation.
+
+```sh
+git clone https://github.com/NickCirv/binary-inspector.git
+cd binary-inspector
+git checkout 2bb01807adee38706aab24a8c017b3a3aa811978
+node index.js package.json --length 64
+```
+
+**Expected behavior (illustrative, not captured):** Prints a hex view of the first 64 bytes of the repository manifest.
+
+Examples are source-inspected, **not runtime-tested**. See the research record for verification gaps.
+
+## Boundaries and data
+
+Magic-byte detection is a fixed signature lookup, not a complete file-format parser. Entropy and printable strings are clues, not malware determinations. Reads the file into memory.
+
+## Development
+
+The manifest defines `npm test` as:
+
+```sh
+node --test
+```
+
+The captured suite is a smoke check, not end-to-end behavior coverage. Examples include “entry is valid JavaScript”, “--help exits 0”. Tests were not run for this documentation revision.
+
+See [implementation and command reference](docs/REFERENCE.md) for the package scripts and inspected interfaces, and [research record](docs/RESEARCH.md) for the pinned source, document decisions and unresolved checks.
+
+## License and contact
+
+See [LICENSE](LICENSE) for the original terms and attribution. Legal text is unchanged.
+
+[Nicholas Ashkar](https://nicholashkar.com/) · [Discuss a project](https://nicholashkar.com/#oxblood-contact)
